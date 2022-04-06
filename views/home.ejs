@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">		 	 		  	   			  
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">		 	 		  	   			  
+        <link rel="stylesheet" href="https://github.com/ColorlibHQ/AdminLTE/blob/master/dist/css/adminlte.css">		 	 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <title>home</title>
+    </head>
+    <body>
+        <div style="margin-left: 2rem;">
+        <h1>Welcome to media wallet</h1>
+        <p>These are the routes you can take :</p>
+        </div>
+        <div class="card" style="width: 25rem; margin-left: 2rem;">
+            <ul class="list-group list-group-flush" id="mediaList">
+                <li class="list-group-item"><a><button type="button" class="btn btn-primary">flickr</button></a> Using Flickr API, images browsing</li>
+                <li class="list-group-item"><a><button type="button" class="btn btn-danger">youtube</button></a> Using Youtube API, videos browsing</li>
+                <li class="list-group-item"><a><button type="button" class="btn btn-dark">giphy</button></a> Using GIPHY API, Gifs browsing</li>
+                <li class="list-group-item"><a><button type="button" class="btn btn-info">dbb</button></a> With node, managing a basic database</li>
+            </ul>
+        </div>
+    </body>
+</html>
+
+<script>
+    console.log($("#mediaList li a"))
+    $("#mediaList li a").each( function(){
+        ref = $(this).text()
+        console.log("oui")
+        $(this).attr("href",window.location.href + ref)
+    });
+</script>

@@ -1,0 +1,221 @@
+<html>		 	 		  	   			  
+    <head>		 	 		  	   			  
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">		 	 		  	   			  
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">		 	 		  	   			  
+       <link rel="stylesheet" href="https://github.com/ColorlibHQ/AdminLTE/blob/master/dist/css/adminlte.css">		 	 		  	   			  
+                                                	  	   			  
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>		 	 		  	   			  
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>		 	 		  	   			  
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>		 	 		  	   			  
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch-jsonp/1.1.1/fetch-jsonp.js"></script>		 	 		  	   			  
+       <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>		 	 		  	   			  
+       <title>Youtube</title>                                         
+                                                
+   </head>		 	 		  	   			  
+                                                
+   <body>		 	 		  	   			  
+                                                
+       <!-- CONTENT -->		 	 		  	   			  
+       <div class="tab-content" id="nav-tabContent">		 	 		  	   			  
+                                                                                         
+   <!-- YOUTUBE CONTENT -->		 	 		  	   			  
+                                            
+               <div class="d-flex flex-row">		 	 		  	   			  
+                   <div class="p-2 col-6">		 	 		  	   			  
+                       <input class="form-control" id="YoutubeSearchBar" type="text" placeholder="Search..." aria-label="YoutubeSearch">		 	 		  	   			  
+                   </div>		 	 		  	   			  
+                   <div class="p-2">		 	 		  	   			  
+                       <button type="button" class="btn btn-danger" id="YoutubeSearchBtn">Search</button>		 	 		  	   			  
+                   </div>		 	 		  	   			  
+               </div>		 	 		  	   			  
+               <table class="table table-dark table-hover">		 	 		  	   			  
+                   <thead>		 	 		  	   			  
+                       <tr>		 	 		  	   			  
+                           <th scope="col">Thumbnail</th>		 	 		  	   			  
+                           <th scope="col">Title</th>		 	 		  	   			  
+                           <th scope="col">Description</th>		 	 		  	   			  
+                       </tr>		 	 		  	   			  
+                   </thead>		 	 		  	   			  
+                   <tbody id="YoutubeContent" >		 	 		  	   			  
+                                                
+                   </tbody>		 	 		  	   			  
+               </table>		 	 		  	   			  
+                                                
+               <div class="Youtube fixed-bottom row">		 	 		  	   			  
+                   <div class= col-12>		 	 		  	   			  
+                       <ul class="pagination justify-content-center" id="YoutubePagination" hidden>		 	 		  	   			  
+                           <li class="page-item">		 	 		  	   			  
+                               <a class="page-link" aria-label="Previous" id="YoutubePrevPage">		 	 		  	   			  
+                                   <span aria-hidden="true">&laquo;</span>		 	 		  	   			  
+                                   <span class="sr-only">Previous</span>		 	 		  	   			  
+                               </a>		 	 		  	   			  
+                           </li>		 	 		  	   			  
+                           <li class="page-item">		 	 		  	   			  
+                               <a class="page-link" id="currentYoutubePage">1</a>		 	 		  	   			  
+                           </li>		 	 		  	   			  
+                           <li class="page-item">		 	 		  	   			  
+                               <a class="page-link" aria-label="Next" id="YoutubeNextPage">		 	 		  	   			  
+                                   <span aria-hidden="true">&raquo;</span>		 	 		  	   			  
+                                   <span class="sr-only">Next</span>		 	 		  	   			  
+                               </a>		 	 		  	   			  
+                           </li>		 	 		  	   			  
+                       </ul>		 	 		  	   			  
+                   </div>		 	 		  	   			  
+               </div>		 	 		  	   			   	 		  	   			  
+                                                
+   <!-- END YOUTUBE CONTENT -->		 	 		  	   			  
+                                                                                   
+                                                                               
+                                                
+   <!-- Media Modal -->		 	 		  	   			  
+   <div class="modal fade" id="MediaModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">		 	 		  	   			  
+       <div class="modal-dialog modal-dialog-centered modal-lg " role="document">		 	 		  	   			  
+                                                
+           <!--Content-->		 	 		  	   			  
+           <div class="modal-content">		 	 		  	   			  
+               <div class="modal-header">		 	 		  	   			  
+                   <h5 class="modal-title" style="overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">Modal Title</h5>		 	 		  	   			  
+               </div>		 	 		  	   			  
+               <!--Body-->		 	 		  	   			  
+               <div id="MediaContainer" class="modal-body mb-0 p-0">		 	 		  	   			  
+                                                
+               </div>		 	 		  	   			  
+                                                
+               <!--Footer-->		 	 		  	   			  
+               <div class="modal-footer justify-content-center">		 	 		  	   			   	   			  
+                   <button id="ModalClose" type="button" class="btn btn-outline-primary btn-rounded btn-md" data-dismiss="modal">Close</button>		 	 		  	   			  
+               </div>		 	 		  	   			  
+           </div>		 	 		  	   			  
+           <!--/.Content-->		 	 		  	   			  
+       </div>		 	 		  	   			  
+   </div>		 	 		  	   			  
+   <!-- end Media Modal -->			  
+                                        
+                                                
+   <!-- Script -->		 	 		  	   			   	 		  	   			  
+                                                
+   <!-- Youtube script-->		 	 		  	   			  
+   <script type="text/javascript">		 	 		  	   			  
+       var searchTextYoutube;		 	 		  	   			  
+       var youtubeMaxPage;		 	 		  	   			  
+       var currentYoutubePage;		 	 		  	   			  
+       var nextPageTokenYoutube='';		 	 		  	   			  
+       var prevPageTokenYoutube='';		 	 		  	   			  
+       
+       jQuery.ajaxSetup({async:false});
+   
+       function youtubeApiCall(youtubeUrl){
+            var dataToReturn;
+            $.get(youtubeUrl,function(data,status){
+                console.log(" oui : " +  data)
+                dataToReturn = data
+            });
+            return dataToReturn	
+        }
+
+       function addVideoYoutube(token){		 	 		  	   			  
+           $("#YoutubeContent").empty();		 	 		  	   			  
+           var youtubeUrl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&q='+searchTextYoutube+'&type=video&pageToken='+token+'&maxResults=10&key=AIzaSyAKqPnwQLnwGdUHi6EAM2Ya3Zq_XBkpgdc';
+           data = youtubeApiCall(youtubeUrl)  	   			   	 		  	   			  	  	   			  
+           if(data.nextPageToken)nextPageTokenYoutube=data.nextPageToken;		 	 		  	   			  
+           if(data.prevPageToken)prevPageTokenYoutube=data.prevPageToken;		 	 		  	   			  
+           var t = data.items.length;		 	 		  	   			  
+           youtubeMaxPage= data.pageInfo.totalResults/data.pageInfo.resultsPerPage;		 	 		  	   			  
+           for (var i=0; i<t; i++){		 	 		  	   			  
+               var v = data.items[i].snippet;		 	 		  	   			  
+               var vThumbnail = v.thumbnails.medium.url;		 	 		  	   			  
+               var vTitle = v.title;		 	 		  	   			  
+               var vDescription = v.description;		 	 		  	   			  
+               $("#YoutubeContent").append('<tr><td class="align-middle"><img src="'+ vThumbnail		 	 		  	   			  
+                   +'"></td><td class="align-middle">'+vTitle		 	 		  	   			  
+                   +'</td><td class="align-middle">'+vDescription+'</td></tr>'		 	 		  	   			  
+                   );		 	 		  	   			  
+               $("#YoutubeContent").children().last().attr("data-toggle","modal");		 	 		  	   			  
+               $("#YoutubeContent").children().last().attr("data-target","#MediaModal");		 	 		  	   			  
+               $("#YoutubeContent").children().last().click({		 	 		  	   			  
+                   mediaMore: 'https://www.youtube-nocookie.com/embed/'+data.items[i].id.videoId ,		 	 		  	   			  
+                   mediaTitle:vTitle,		 	 		  	   			  
+                   mediaContent:vThumbnail		 	 		  	   			  
+               },setModalYoutube);		 	 		  	   			  
+                                            
+           }		 	 		  	   			  	  	   			  	 		  	   			  
+       }		 	 		  	   			  
+                                                
+       $("#YoutubeSearchBtn").click(function(){		 	 		  	   			  
+           searchTextYoutube = $("#YoutubeSearchBar").val().toLowerCase();		 	 		  	   			  
+           if (searchTextYoutube=="" || searchTextYoutube.replace(/\s+/g, '') =="" )return;		 	 		  	   			   	 		  	   			  
+           searchTextYoutube=searchTextYoutube.replace(/\s+/g, '+');		 	 		  	   			  
+           currentYoutubePage=1;		 	 		  	   			  
+           document.getElementById("YoutubePagination").hidden=false;		 	 		  	   			  
+           $("#currentYoutubePage").text(currentYoutubePage)		 	 		  	   			  
+           //console.log(searchTextYoutube);		 	 		  	   			  
+           addVideoYoutube("");		 	 		  	   			  
+       });		 	 		  	   			  
+                                                
+       $("#YoutubeNextPage").click(function(){		 	 		  	   			  
+           if(currentYoutubePage>youtubeMaxPage-1){		 	 		  	   			  
+               alert("No more page");		 	 		  	   			  
+               return;		 	 		  	   			  
+           }		 	 		  	   			  
+           currentYoutubePage++;		 	 		  	   			  
+           $("#currentYoutubePage").text(currentYoutubePage)		 	 		  	   			  
+           addVideoYoutube(nextPageTokenYoutube);		 	 		  	   			  
+                                                
+       });		 	 		  	   			  
+                                                
+       $("#YoutubePrevPage").click(function(){		 	 		  	   			  
+           if(currentYoutubePage<2){		 	 		  	   			  
+               alert("No previous page");		 	 		  	   			  
+               return;		 	 		  	   			  
+           }		 	 		  	   			  
+           currentYoutubePage--;		 	 		  	   			  
+           $("#currentYoutubePage").text(currentYoutubePage)		 	 		  	   			  
+           addVideoYoutube(prevPageTokenYoutube);		 	 		  	   			  
+       });		 	 		  	   			  
+                                                
+       function setModalYoutube(event){		 	 		  	   			  
+           $("#MediaContainer").empty();		 	 		  	   			  
+           $(".modal-title").empty();		 	 		  	   			  	 	 		  	   			  
+           $(".modal-title").text(event.data.mediaTitle);		 	 		  	   			  
+           $("#MediaContainer").append('<p align="center"><iframe width="560" height="315" src="'+event.data.mediaMore		 	 		  	   			  
+               +'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>');		 	 		  	   			  
+       }		 	 		  	   			  
+                                                
+       $("#ModalClose").click(function(){		 	 		  	   			  
+           $("#MediaContainer").empty();		 	 		  	   			  
+       });		 	 		  	   			  
+                                                
+                                                
+   </script>		 	 		  	   			  
+   <!-- end youtube script -->		 	 		  	   			  
+                                        
+                                                               
+   <!-- END Script -->		 	 		  	   			  
+                                                
+   <!-- Style -->		 	 		  	   			  
+   <style type="text/css">		 	 		  	   			  
+       .small-box{		 	 		  	   			  
+           border-radius: 5px;		 	 		  	   			  
+           padding:10px;		 	 		  	   			  
+           margin-bottom: 20px;		 	 		  	   			  
+           min-width: 150px		 	 		  	   			  
+       }		 	 		  	   			  
+                                                
+       p {		 	 		  	   			  
+         color:#ffffff;		 	 		  	   			  
+     }		 	 		  	   			  
+                                                
+     .boxTitle {		 	 		  	   			  
+       color:#ffffff;		 	 		  	   			  
+       font-weight: 700;		 	 		  	   			  
+   }		 	 		  	   			  
+                                                
+   .graphCard{		 	 		  	   			  
+       min-width: 350px;		 	 		  	   			  
+   }		 	 		  	   			  
+   </style>		 	 		  	   			  
+                                                
+   <!-- end Style -->		 	 		  	   			  
+                                                
+   </body>		 	 		  	   			  
+   </html>		 	 		  	   			  

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>		 	 		  	   			  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">		 	 		  	   			  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">		 	 		  	   			  
+    <link rel="stylesheet" href="https://github.com/ColorlibHQ/AdminLTE/blob/master/dist/css/adminlte.css">		 	 		  	   			  	 		  	   			  
+    <title>People View</title>                                         
+                                             
+</head>
+<body> 	 		  	   
+    <h1> People in database </h1>
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Mail</th>
+              <th scope="col">Job</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% data.forEach(function(r) { %>
+                <tr>
+                    <td><%= r.id %></td>
+                    <td><%= r.nameP %></td>
+                    <td><%= r.mailP %></td>
+                    <td><%= r.jobP %></td>
+                </tr>
+            <% }); %>
+          </tbody>
+
+    </table>
+    <a href="/dbb"><button class="btn btn-light"> BACK TO DBB ADD </button></a>
+</body>
+</html>

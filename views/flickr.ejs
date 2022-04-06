@@ -1,0 +1,253 @@
+<html>		 	 		  	   			  
+    <head>		 	 		  	   			  
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">		 	 		  	   			  
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">		 	 		  	   			  
+       <link rel="stylesheet" href="https://github.com/ColorlibHQ/AdminLTE/blob/master/dist/css/adminlte.css">		 	 		  	   			  
+                                                  	   			  
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>		 	 		  	   			  
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>		 	 		  	   			  
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>		 	 		  	   			  
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch-jsonp/1.1.1/fetch-jsonp.js"></script>		 	 		  	   			  
+       <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>		 	 		  	   			  
+       <title>Flickr</title>
+                                                
+   </head>		 	 		  	   			  
+                                                
+   <body>		 	 		  	   			  
+                                                                                    
+       <!-- CONTENT -->		 	 		  	   			  
+       <div class="tab-content" id="nav-tabContent">		 	 		  	   			  
+                                                
+   <!--FLICKR CONTENT -->		 	 		  	   			  	 	 		  	   			  
+               <div class="d-flex flex-row">		 	 		  	   			  
+                   <div class="p-2 col-6">		 	 		  	   			  
+                       <input class="form-control" id="FlickrSearchBar" type="text" placeholder="Search..." aria-label="FlickrSearch">		 	 		  	   			  
+                   </div>		 	 		  	   			  
+                   <div class="p-2">		 	 		  	   			  
+                       <button type="button" class="btn btn-primary" id="FlickrSearchBtn">Search</button>		 	 		  	   			  
+                   </div>		 	 		  	   			  
+               </div>		 	 		  	   			  
+                                                
+               <div class="row">		 	 		  	   			  
+                   <div class="mt-2 ml-1 col-12" id="FlickrContent">		 	 		  	   			  
+                                                
+                   </div>		 	 		  	   			  
+               </div>		 	 		  	   			  
+               <!-- FLICKR pagination -->		 	 		  	   			  
+               <div class="Flickr fixed-bottom row">		 	 		  	   			  
+                   <div class= col-12>		 	 		  	   			  
+                       <ul class="pagination justify-content-center" id="FlickrPagination" hidden>		 	 		  	   			  
+                           <li class="page-item">		 	 		  	   			  
+                               <a class="page-link" aria-label="Previous" id="FlickrPrevPage">		 	 		  	   			  
+                                   <span aria-hidden="true">&laquo;</span>		 	 		  	   			  
+                                   <span class="sr-only">Previous</span>		 	 		  	   			  
+                               </a>		 	 		  	   			  
+                           </li>		 	 		  	   			  
+                           <li class="page-item">		 	 		  	   			  
+                               <a class="page-link" id="currentFlickrPage">1</a>		 	 		  	   			  
+                           </li>		 	 		  	   			  
+                           <li class="page-item">		 	 		  	   			  
+                               <a class="page-link" aria-label="Next" id="FlickrNextPage">		 	 		  	   			  
+                                   <span aria-hidden="true">&raquo;</span>		 	 		  	   			  
+                                   <span class="sr-only">Next</span>		 	 		  	   			  
+                               </a>		 	 		  	   			  
+                           </li>		 	 		  	   			  
+                       </ul>		 	 		  	   			  
+                   </div>		 	 		  	   			   	 		  	   			  
+                                                
+           </div>		 	 		  	   			  
+                                                
+   <!-- END FLICKR CONTENT -->		 	 		  	   			  
+                                            
+                                                                                   
+                                                
+   <!-- Media Modal -->		 	 		  	   			  
+   <div class="modal fade" id="MediaModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">		 	 		  	   			  
+       <div class="modal-dialog modal-dialog-centered modal-lg " role="document">		 	 		  	   			  
+                                                
+           <!--Content-->		 	 		  	   			  
+           <div class="modal-content">		 	 		  	   			  
+               <div class="modal-header">		 	 		  	   			  
+                   <h5 class="modal-title" style="overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">Modal Title</h5>		 	 		  	   			  
+               </div>		 	 		  	   			  
+               <!--Body-->		 	 		  	   			  
+               <div id="MediaContainer" class="modal-body mb-0 p-0">		 	 		  	   			  
+                                                
+               </div>		 	 		  	   			  
+                                                
+               <!--Footer-->		 	 		  	   			  
+               <div class="modal-footer justify-content-center">		 	 		  	   			    	   			  
+                   <button id="ModalClose" type="button" class="btn btn-outline-primary btn-rounded btn-md" data-dismiss="modal">Close</button>		 	 		  	   			  
+               </div>		 	 		  	   			  
+           </div>		 	 		  	   			  
+           <!--/.Content-->		 	 		  	   			  
+       </div>		 	 		  	   			  
+   </div>		 	 		  	   			  
+   <!-- end Media Modal -->			  
+                                        
+                                                
+   <!-- Script -->		 	 		  	   			  
+   <!-- FLICKR SCRIPT -->		 	 		  	   			  
+   <script type="text/javascript">		 	 		  	   			  
+       var cptFlickr= 0;		 	 		  	   			  
+       var searchTextFlickr;		 	 		  	   			  
+       var currentFlickrPage;		 	 		  	   			  
+       var flickrMaxPage;		 	 		  	   			  
+                                                
+                                                
+       function fitFlickr(){		 	 		  	   			  
+           var row =0;		 	 		  	   			  
+           var column = 0;		 	 		  	   			  
+           var w = $(window).width();		 	 		  	   			  
+           $(".FlickrImage").each(function () {		 	 		  	   			  
+               $(this).width(w/5.1);		 	 		  	   			  
+               $(this).height(w/5.5);		 	 		  	   			  
+               $(this).css("position","absolute");		 	 		  	   			  
+               $(this).css("display","flex");		 	 		  	   			  
+               $(this).css("background-repeat","no-repeat");		 	 		  	   			  
+               $(this).css("background-size","cover");		 	 		  	   			  
+               $(this).css("left",$(this).width()*column);		 	 		  	   			  
+               $(this).css("top",$(this).width()*row);		 	 		  	   			  
+               //$(this).css("margin","5px");		 	 		  	   			  
+               $(this).css("border-radius",'5vw');		 	 		  	   			  
+                                                
+               $(this).hover(function(){		 	 		  	   			  
+                   $(this).css("z-index",'1000');		 	 		  	   			  
+                   $(this).css("transform","scale(1.1)" );		 	 		  	   			  
+                   $(this).css("box-shadow","0px 0px 10px 2px #000000");		 	 		  	   			  
+                   $(this).css("transition","transform 0.5s");		 	 		  	   			  
+                                                
+               },function(){		 	 		  	   			  
+                                                
+                   $(this).css("z-index",'0');		 	 		  	   			  
+                   $(this).css("transform","scale(1)" );		 	 		  	   			  
+                   $(this).css("box-shadow","0px 0px 0px 0px #000000");		 	 		  	   			  
+                   $(this).css("transition","transform 0.5s");		 	 		  	   			  
+               });		 	 		  	   			  
+               column++;		 	 		  	   			  
+               if(column>4){		 	 		  	   			  
+                   row++;		 	 		  	   			  
+                   column=0;		 	 		  	   			  
+               }		 	 		  	   			  
+           });		 	 		  	   			  
+       }		 	 		  	   			  
+                                                
+       function setImgModalFlickr(event){		 	 		  	   			  
+           //console.log(src);		 	 		  	   			  
+           $("#MediaContainer").empty();		 	 		  	   			  
+           $(".modal-title").empty();		 	 		  	   			  		 	 		  	   			  
+           $(".modal-title").text(event.data.mediaTitle);		 	 		  	   			  
+           $("#MediaContainer").append('<div class="text-center"><img id="FlickrCurrentImg" src="" class="img-fluid rounded" alt="Responsive image"></div>');		 	 		  	   			  
+           $("#FlickrCurrentImg").attr("src",event.data.mediaContent);		 	 		  	   			  
+       }		 	 		  	   			  
+                      
+       jQuery.ajaxSetup({async:false});
+       function flickrApiCall(flickrUrl){
+            var dataToReturn;
+            $.get(flickrUrl,function(data,status){
+                console.log(" oui : " +  data)
+                dataToReturn = data
+            });
+            return dataToReturn	
+        }
+
+       function addImageFlickr(){		 	 		  	   			  
+           $("#FlickrContent").empty();		 	 		  	   			  
+           var flickrUrl = "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=23c7f4fe1b6e4e3e2bae222a61527ac9&text="+searchTextFlickr+"&safe_search=1&media=photos&extras=url_m&per_page=50&page="+currentFlickrPage+"&sort=relevance&content_type=1&safe_search=3&format=json&nojsoncallback=1";	
+   
+           var data = flickrApiCall(flickrUrl)	 	 		  	   			   	 		  	   			  
+           //console.log(data);		 	 		  	   			  
+           flickrMaxPage = data.photos.pages;		 	 		  	   			  
+           var t =data.photos.photo.length;		 	 		  	   			  
+           for (var i=0; i<t;i++){		 	 		  	   			  
+               var link = data.photos.photo[i].url_m;		 	 		  	   			  
+               if(link==null)continue;		 	 		  	   			  
+               $("#FlickrContent").append("<div class='FlickrImage'> </div>");		 	 		  	   			  
+               $("#FlickrContent").children().last().css("background-image","url("+link+")");		 	 		  	   			  
+               $("#FlickrContent").children().last().attr("data-toggle","modal");		 	 		  	   			  
+               $("#FlickrContent").children().last().attr("data-target","#MediaModal");		 	 		  	   			  
+               $("#FlickrContent").children().last().click({		 	 		  	   			  
+                   mediaContent:link,		 	 		  	   			  
+                   mediaTitle:data.photos.photo[i].title}		 	 		  	   			  
+                   ,setImgModalFlickr);		 	 		  	   			  
+               cptFlickr++;		 	 		  	   			  
+           }		 	 		  	   			  
+   
+           fitFlickr();		 	 		  	   			  
+       }		 	 		  	   			  
+                                                
+       $("#FlickrNextPage").click(function(){		 	 		  	   			  
+           if(currentFlickrPage>flickrMaxPage-1){		 	 		  	   			  
+               alert("No more page");		 	 		  	   			  
+               return;		 	 		  	   			  
+           }		 	 		  	   			  
+           cptFlickr=0;		 	 		  	   			  
+           currentFlickrPage++;		 	 		  	   			  
+                                                
+           $("#currentFlickrPage").text(currentFlickrPage)		 	 		  	   			  
+           addImageFlickr();		 	 		  	   			  
+                                                
+       });		 	 		  	   			  
+                                                
+       $("#FlickrPrevPage").click(function(){		 	 		  	   			  
+           if(currentFlickrPage<2){		 	 		  	   			  
+               alert("No previous page");		 	 		  	   			  
+               return;		 	 		  	   			  
+           }		 	 		  	   			  
+           cptFlickr=0;		 	 		  	   			  
+           currentFlickrPage--;		 	 		  	   			  
+           $("#currentFlickrPage").text(currentFlickrPage)		 	 		  	   			  
+           addImageFlickr();		 	 		  	   			  
+                                                
+       });		 	 		  	   			  
+                                                
+       $("#FlickrSearchBtn").click(function(){		 	 		  	   			  
+           searchTextFlickr = $("#FlickrSearchBar").val().toLowerCase();		 	 		  	   			  
+           if (searchTextFlickr=="" || searchTextFlickr.replace(/\s+/g, '') =="" )return;		 	 		  	   			  
+           document.getElementById("FlickrPagination").hidden=false;		 	 		  	   			  
+           currentFlickrPage = 1;		 	 		  	   			  
+           $("#currentFlickrPage").text(currentFlickrPage);		 	 		  	   			  
+           cptFlickrFlickr=0;		 	 		  	   			  
+           //console.log(searchTextFlickr);		 	 		  	   			  
+           addImageFlickr();		 	 		  	   			    	   			  
+       });		 	 		  	   			  
+                                                
+       $(window).resize(function(){		 	 		  	   			  
+           fitFlickr();		 	 		  	   			  
+       });		 	 		  	   			  
+                                                
+                                                
+   </script>		 	 		  	   			  
+   <!-- end Flickr Script -->		 	 		  	   			  
+                                                
+   
+                                                
+   <!-- END Script -->		 	 		  	   			  
+                                                
+   <!-- Style -->		 	 		  	   			  
+   <style type="text/css">		 	 		  	   			  
+       .small-box{		 	 		  	   			  
+           border-radius: 5px;		 	 		  	   			  
+           padding:10px;		 	 		  	   			  
+           margin-bottom: 20px;		 	 		  	   			  
+           min-width: 150px		 	 		  	   			  
+       }		 	 		  	   			  
+                                                
+       p {		 	 		  	   			  
+         color:#ffffff;		 	 		  	   			  
+     }		 	 		  	   			  
+                                                
+     .boxTitle {		 	 		  	   			  
+       color:#ffffff;		 	 		  	   			  
+       font-weight: 700;		 	 		  	   			  
+   }		 	 		  	   			  
+                                                
+   .graphCard{		 	 		  	   			  
+       min-width: 350px;		 	 		  	   			  
+   }		 	 		  	   			  
+   </style>		 	 		  	   			  
+                                                
+   <!-- end Style -->		 	 		  	   			  
+                                                
+   </body>		 	 		  	   			  
+   </html>		 	 		  	   			  

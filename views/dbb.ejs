@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">		 	 		  	   			  
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">		 	 		  	   			  
+        <link rel="stylesheet" href="https://github.com/ColorlibHQ/AdminLTE/blob/master/dist/css/adminlte.css">		 	 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <title>DBB add</title>
+    </head>
+    <body>
+        <h1>ESIEE People Database</h1>
+        <div style="margin-left: 2rem;">
+            <form action="/dbb/add" method="POST">
+                
+                    <div class="form-group" style="width: 20rem;">
+                        <h3>Add new person</h3>
+                        <label>Name</label>
+                        <input type="text" class="form-control" placeholder="Your Name" name="nameP" required>
+
+                        <label>Mail</label>
+                        <input type="text" class="form-control" placeholder="Your @ Mail" name="mailP" required>
+            
+                        <label>Job</label>
+                        <input type="text" class="form-control" placeholder="Your Job/Title" name="jobP" required>
+                    </div>
+
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                        <button type="submit" class="btn btn-secondary">Submit</button>
+                    </div>
+                
+            </form>
+
+            <a href="/dbb/peopleview"><button class="btn btn-success"> VIEW PEOPLE IN DATABASE </button></a>
+            <a href="/"><button class="btn btn-light"> BACK TO HOME </button></a>
+        </div>
+    </body>
+</html>
